@@ -74,12 +74,8 @@ public class PdfConverter implements Runnable {
                                 if (mShouldEncode) {
                                     base64 = encodeFromFile(mPdfFile);
                                 }
-
-                                PDDocument myDocument = PDDocument.load(mPdfFile);
-                                int pagesToBePrinted = myDocument.getNumberOfPages();
-
+                                
                                 mResultMap.putString("filePath", mPdfFile.getAbsolutePath());
-                                mResultMap.putString("numberOfPages", String.valueOf(pagesToBePrinted));
                                 mResultMap.putString("base64", base64);
                                 mPromise.resolve(mResultMap);
                             } catch (IOException e) {
